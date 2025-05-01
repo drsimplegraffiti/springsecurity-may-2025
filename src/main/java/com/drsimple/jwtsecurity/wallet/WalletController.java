@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequestMapping("/api/wallet")
 public class WalletController {
@@ -32,10 +34,10 @@ public class WalletController {
     // Endpoint to transfer money
     @PostMapping("/transfer")
     public ResponseEntity<?> transferMoney(
-            @RequestParam Long toUserId,
-            @RequestParam double amount) {
+            @RequestParam String accountNumber,
+            @RequestParam BigDecimal amount) {
         try {
-            walletService.transferMoney( toUserId, amount);
+            walletService.transferMoney( accountNumber, amount);
             return ResponseEntity.ok("Transfer successful");
         } catch (IllegalStateException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

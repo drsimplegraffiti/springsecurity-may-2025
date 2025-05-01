@@ -3,6 +3,8 @@ package com.drsimple.jwtsecurity.wallet;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "wallets")
 @Getter
@@ -17,7 +19,7 @@ public class Wallet {
     private Long id;
 
     @Column(nullable = false)
-    private double balance;
+    private BigDecimal balance;
 
     @Column(nullable = false)
     private Long userId;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
@@ -31,11 +32,10 @@ public class WalletService {
     public Wallet createWallet() {
         User loggedInUser = currentUserUtil.getLoggedInUser();
 
-        var userExist = userRepository.findById(loggedInUser.getId());
-        if (userExist.isEmpty()) throw new CustomBadRequestException("User not found");
+        User user = userRepository.findById(loggedInUser.getId())
+                .orElseThrow(() -> new CustomBadRequestException("User not found"));
 
-        boolean walletExist = walletRepository.existsById(loggedInUser.getId());
-        if (walletExist) {
+        if (walletRepository.existsById(loggedInUser.getId())) {
             throw new CustomBadRequestException("Wallet already exists for this user.");
         }
 
@@ -44,14 +44,17 @@ public class WalletService {
         Wallet wallet = Wallet.builder()
                 .userId(loggedInUser.getId())
                 .accountNumber(accountNumber)
-                .balance(0)
+                .balance(BigDecimal.ZERO)
                 .build();
+
+        user.setAccountNumber(accountNumber);
+        userRepository.save(user);
 
         return walletRepository.save(wallet);
     }
 
     @Transactional
-    public void transferMoney( Long toUserId, double amount) {
+    public void transferMoney( String accountNumber, BigDecimal amount) {
         User loggedInUser = currentUserUtil.getLoggedInUser();
 
         var userExist = userRepository.findById(loggedInUser.getId());
@@ -62,8 +65,8 @@ public class WalletService {
         String lockValue = UUID.randomUUID().toString(); // Unique lock value
         long lockExpiry = 5000L; // Lock expires in 5 seconds
 
-        String fromKey = "wallet:lock:" + fromUserId;
-        String toKey = "wallet:lock:" + toUserId;
+        String fromKey = "wallet:lock:" + userExist.get().getAccountNumber();
+        String toKey = "wallet:lock:" + accountNumber;
 
         boolean fromLock = redisLockService.acquireLock(fromKey, lockValue, lockExpiry);
         boolean toLock = redisLockService.acquireLock(toKey, lockValue, lockExpiry);
@@ -76,19 +79,19 @@ public class WalletService {
         }
 
         try {
-            Wallet fromWallet = walletRepository.findByUserId(fromUserId);
-            Wallet toWallet = walletRepository.findByUserId(toUserId);
+            Wallet fromWallet = walletRepository.findByAccountNumber(accountNumber);
+            Wallet toWallet = walletRepository.findByAccountNumber(userExist.get().getAccountNumber());
 
             if (fromWallet == null || toWallet == null) {
                 throw new CustomBadRequestException("One or both wallets not found.");
             }
 
-            if (fromWallet.getBalance() < amount) {
+            if (fromWallet.getBalance().compareTo(amount) < 0) {
                 throw new CustomBadRequestException("Insufficient funds.");
             }
 
-            fromWallet.setBalance(fromWallet.getBalance() - amount);
-            toWallet.setBalance(toWallet.getBalance() + amount);
+            fromWallet.setBalance(fromWallet.getBalance().subtract(amount));
+            toWallet.setBalance(toWallet.getBalance().add(amount));
 
             walletRepository.save(fromWallet);
             walletRepository.save(toWallet);
