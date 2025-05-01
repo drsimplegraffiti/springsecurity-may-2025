@@ -39,7 +39,7 @@ public class AuthService {
     @Transactional
     public void registerUser(RegisterRequest registerRequest) throws MessagingException {
         // Check if user with the same username already exist
-        if(userRepository.existsByUsername(registerRequest.getUsername())) {
+        if(userRepository.existsByUsername(registerRequest.getEmail())) {
             throw new IllegalArgumentException("Username is already in use");
         }
 
@@ -47,7 +47,8 @@ public class AuthService {
         User user = User
                 .builder()
                 .fullName(registerRequest.getFullName())
-                .username(registerRequest.getUsername())
+                .username(registerRequest.getEmail())
+                .email(registerRequest.getEmail())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .role(registerRequest.getRole())
                 .build();
@@ -55,11 +56,11 @@ public class AuthService {
         userRepository.save(user);
 
         Map<String, Object> model = new HashMap<>();
-        model.put("name", "John Doe");
+        model.put("name", registerRequest.getFullName());
         model.put("verificationUrl", "https://example.com/verify?token=abc123");
 
         emailService.sendVerificationEmail(
-                "abayomiogunnusi@gmail.com",
+                registerRequest.getEmail(),
                 "Verify your account",
                 "verification", // template name without `.html`
                 model

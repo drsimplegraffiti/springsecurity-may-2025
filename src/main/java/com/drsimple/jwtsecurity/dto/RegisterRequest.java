@@ -15,9 +15,9 @@ public class RegisterRequest {
     @Size(min = 3, max = 50, message = "Full name must be between 3 and 50 characters")
     private String fullName;
 
-    @NotBlank(message = "Username is required")
-    @Size(min = 3, max = 10, message = "Username must be between 3 and 10 characters")
-    private String username;
+    @NotBlank(message = "Email is required")
+    private String email;
+
 
     @NotBlank(message = "Password is required")
     @Size(min = 3, message = "Password must be at least 3 characters")
@@ -29,16 +29,17 @@ public class RegisterRequest {
         return fullName;
     }
 
+
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
