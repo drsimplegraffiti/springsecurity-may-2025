@@ -5,6 +5,7 @@ import com.drsimple.jwtsecurity.exception.ConflictException;
 import com.drsimple.jwtsecurity.user.User;
 import com.drsimple.jwtsecurity.pagination.PaginationResponse;
 import com.drsimple.jwtsecurity.pagination.PaginationUtil;
+import com.drsimple.jwtsecurity.util.AuditService;
 import com.drsimple.jwtsecurity.util.CurrentUserUtil;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,13 +21,14 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CurrentUserUtil currentUserUtil;
     private final PaginationUtil paginationUtil;
+    private final AuditService auditService;
 
 
-
-    public ProductService(ProductRepository productRepository, CurrentUserUtil currentUserUtil, PaginationUtil paginationUtil) {
+    public ProductService(ProductRepository productRepository, CurrentUserUtil currentUserUtil, PaginationUtil paginationUtil, AuditService auditService) {
         this.productRepository = productRepository;
         this.currentUserUtil = currentUserUtil;
         this.paginationUtil = paginationUtil;
+        this.auditService = auditService;
     }
 
 //    public PaginationResponse<Product> getAllProducts(int page, int size, String sortBy, String sortDir, String nameFilter) {
@@ -71,6 +73,8 @@ public class ProductService {
 
         Optional<Product> productExist = productRepository.findByName(product.getName());
         if(productExist.isPresent()) throw  new ConflictException("product already exist");
+
+        auditService.log(loggedInUser.getId(), "CREATE_PRODUCT", "product:create");
 
         Product productEntity = new Product();
         productEntity.setPrice(product.getPrice());

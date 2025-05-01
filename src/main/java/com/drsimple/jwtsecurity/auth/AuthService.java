@@ -9,10 +9,7 @@ import com.drsimple.jwtsecurity.exception.CustomBadRequestException;
 import com.drsimple.jwtsecurity.user.User;
 import com.drsimple.jwtsecurity.user.UserRepository;
 import com.drsimple.jwtsecurity.service.JwtService;
-import com.drsimple.jwtsecurity.util.CloudinaryService;
-import com.drsimple.jwtsecurity.util.CurrentUserUtil;
-import com.drsimple.jwtsecurity.util.EmailService;
-import com.drsimple.jwtsecurity.util.TokenBlacklistService;
+import com.drsimple.jwtsecurity.util.*;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,7 +41,7 @@ public class AuthService {
     private final TokenBlacklistService tokenBlacklistService;
     private final CloudinaryService cloudinaryService;
     private final CurrentUserUtil currentUserUtil;
-
+    private final AuditService auditService;
 
 
     public String uploadProfilePic(MultipartFile file) throws IOException {
@@ -114,7 +111,6 @@ public class AuthService {
 
         // Set authentication in security context
         SecurityContextHolder.getContext().setAuthentication(authentication);
-
         // Generate Token Pair
         return jwtService.generateTokenPair(authentication);
     }
