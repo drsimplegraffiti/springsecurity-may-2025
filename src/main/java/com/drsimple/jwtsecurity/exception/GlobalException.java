@@ -3,6 +3,7 @@ package com.drsimple.jwtsecurity.exception;
 
 import jakarta.mail.MessagingException;
 import jakarta.validation.ConstraintViolationException;
+import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +63,12 @@ public class GlobalException {
     public ResponseEntity<?> handleConflictException(Exception ex) {
         return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
+
+@ExceptionHandler({ RedisConnectionFailureException.class })
+public ResponseEntity<?> handleRedisException(Exception ex) {
+    return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
+}
 
     @ExceptionHandler(MessagingException.class)
     public ResponseEntity<?> handleMessagingException(MessagingException ex) {

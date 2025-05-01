@@ -9,6 +9,7 @@ import com.drsimple.jwtsecurity.user.User;
 import com.drsimple.jwtsecurity.user.UserRepository;
 import com.drsimple.jwtsecurity.service.JwtService;
 import com.drsimple.jwtsecurity.util.EmailService;
+import com.drsimple.jwtsecurity.util.TokenBlacklistService;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -35,6 +36,12 @@ public class AuthService {
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
     private final EmailService emailService;
+    private final TokenBlacklistService tokenBlacklistService;
+
+    public void logout(String token) {
+        long remainingMillis = jwtService.getRemainingValidity(token);
+        tokenBlacklistService.blacklistToken(token, remainingMillis);
+    }
 
     @Transactional
     public void registerUser(RegisterRequest registerRequest) throws MessagingException {

@@ -1,6 +1,7 @@
 package com.drsimple.jwtsecurity.service;
 
 import com.drsimple.jwtsecurity.dto.TokenPair;
+import com.drsimple.jwtsecurity.util.TokenBlacklistService;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -19,6 +20,7 @@ import java.util.Map;
 @Slf4j
 public class JwtService {
 
+    private final TokenBlacklistService tokenBlacklistService;
     @Value("${app.jwt.secret}")
     private String jwtSecret;
 
@@ -27,6 +29,10 @@ public class JwtService {
 
     @Value("${app.jwt.refresh-expiration}")
     private long refreshExpirationMs;
+
+    public JwtService(TokenBlacklistService tokenBlacklistService) {
+        this.tokenBlacklistService = tokenBlacklistService;
+    }
 
 
     public TokenPair generateTokenPair(Authentication authentication) {
@@ -74,6 +80,7 @@ public class JwtService {
     }
 
     public boolean isValidToken(String token) {
+        if (tokenBlacklistService.isTokenBlacklisted(token)) return false;
         return extractAllClaims(token) != null;
     }
 
@@ -114,5 +121,10 @@ public class JwtService {
     private SecretKey getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);
         return Keys.hmacShaKeyFor(keyBytes);
+    }
+
+    public long getRemainingValidity(String token) {
+        Claims claims = extractAllClaims(token);
+        return claims.getExpiration().getTime() - System.currentTimeMillis();
     }
 }
