@@ -41,6 +41,9 @@ public class User {
     private String password;
 
     @Column(nullable = true)
+    private String profilePic;
+
+    @Column(nullable = true)
     private String accountNumber;
 
     @Enumerated(EnumType.STRING)

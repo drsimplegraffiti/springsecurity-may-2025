@@ -10,6 +10,7 @@ import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -46,5 +47,15 @@ public class AuthController {
     public ResponseEntity<?> refreshToken(@Valid @RequestBody RefreshTokenRequest request) {
         TokenPair tokenPair = authService.refreshToken(request);
         return ResponseEntity.ok(tokenPair);
+    }
+
+    @PostMapping("/upload-profile-image")
+    public ResponseEntity<ApiResponse<String>> uploadProfileImage(@RequestParam("file") MultipartFile file) {
+        try {
+            String imageUrl = authService.uploadProfilePic(file);
+            return ResponseEntity.ok(ApiResponse.success("Image uploaded", imageUrl));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(ApiResponse.fail("Upload failed: " + e.getMessage()));
+        }
     }
 }

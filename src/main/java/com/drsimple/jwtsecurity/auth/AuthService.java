@@ -5,9 +5,12 @@ import com.drsimple.jwtsecurity.dto.LoginRequest;
 import com.drsimple.jwtsecurity.dto.RefreshTokenRequest;
 import com.drsimple.jwtsecurity.dto.RegisterRequest;
 import com.drsimple.jwtsecurity.dto.TokenPair;
+import com.drsimple.jwtsecurity.exception.CustomBadRequestException;
 import com.drsimple.jwtsecurity.user.User;
 import com.drsimple.jwtsecurity.user.UserRepository;
 import com.drsimple.jwtsecurity.service.JwtService;
+import com.drsimple.jwtsecurity.util.CloudinaryService;
+import com.drsimple.jwtsecurity.util.CurrentUserUtil;
 import com.drsimple.jwtsecurity.util.EmailService;
 import com.drsimple.jwtsecurity.util.TokenBlacklistService;
 import jakarta.mail.MessagingException;
@@ -22,7 +25,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +42,30 @@ public class AuthService {
     private final UserDetailsService userDetailsService;
     private final EmailService emailService;
     private final TokenBlacklistService tokenBlacklistService;
+    private final CloudinaryService cloudinaryService;
+    private final CurrentUserUtil currentUserUtil;
+
+
+
+    public String uploadProfilePic(MultipartFile file) throws IOException {
+        User loggedInUser = currentUserUtil.getLoggedInUser();
+        var user = userRepository.findById(loggedInUser.getId());
+        if(user.isEmpty()) throw  new CustomBadRequestException("User not logged in");
+
+        if (file.isEmpty() || !file.getContentType().startsWith("image/")) {
+            throw new IllegalArgumentException("Only image files are allowed.");
+        }
+        if (file.getSize() > 5 * 1024 * 1024) {
+            throw new IllegalArgumentException("File size exceeds 5MB.");
+        }
+
+        User theUser = user.get();
+        String imageUrl = cloudinaryService.uploadFile(file);
+        theUser.setProfilePic(imageUrl);
+
+        userRepository.save(theUser);
+        return imageUrl;
+    }
 
     public void logout(String token) {
         long remainingMillis = jwtService.getRemainingValidity(token);
