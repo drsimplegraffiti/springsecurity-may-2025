@@ -70,7 +70,13 @@ public ResponseEntity<?> handleRedisException(Exception ex) {
     return buildErrorResponse(ex.getMessage(), HttpStatus.CONFLICT);
 }
 
-    @ExceptionHandler(MessagingException.class)
+
+    @ExceptionHandler({CustomBadRequestException.class})
+    public ResponseEntity<?> handleBadRequestException(CustomBadRequestException ex) {
+        return buildErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({MessagingException.class})
     public ResponseEntity<?> handleMessagingException(MessagingException ex) {
         return buildErrorResponse("Failed to send email: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }

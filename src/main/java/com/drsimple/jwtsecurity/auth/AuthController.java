@@ -5,6 +5,7 @@ import com.drsimple.jwtsecurity.dto.LoginRequest;
 import com.drsimple.jwtsecurity.dto.RefreshTokenRequest;
 import com.drsimple.jwtsecurity.dto.RegisterRequest;
 import com.drsimple.jwtsecurity.dto.TokenPair;
+import com.drsimple.jwtsecurity.util.ApiResponse;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -29,16 +30,16 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterRequest request) throws MessagingException {
+    public ResponseEntity<ApiResponse<String>> registerUser(@Valid @RequestBody RegisterRequest request) throws MessagingException {
         // Save the new user to the database and return success response.
         authService.registerUser(request);
-        return ResponseEntity.ok("User registered successfully");
+        return ResponseEntity.ok(ApiResponse.success("User registered successfully"));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@Valid @RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<ApiResponse<Object>> login(@Valid @RequestBody LoginRequest loginRequest) {
         TokenPair tokenPair = authService.login(loginRequest);
-        return ResponseEntity.ok(tokenPair);
+        return ResponseEntity.ok(ApiResponse.success(tokenPair));
     }
 
     @PostMapping("/refresh-token")
