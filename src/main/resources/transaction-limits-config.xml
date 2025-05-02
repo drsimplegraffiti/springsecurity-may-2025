@@ -18,7 +18,7 @@
         <property name="withdrawalEnabled" value="true"/>
 
         <!-- Set the property 'depositEnabled' to true -->
-        <property name="depositEnabled" value="false"/>
+        <property name="depositEnabled" value="true"/>
 
         <!-- Set the property 'maxDailyWithdrawal' to 1000 -->
         <property name="maxDailyWithdrawal" value="1000"/>
