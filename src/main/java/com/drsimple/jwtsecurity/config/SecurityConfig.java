@@ -37,6 +37,11 @@ private final UserDetailsService userDetailsService;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
+    public static final String[] WHITE_LIST_URL = {
+            "/api/auth/**",
+            "/api/external/**"
+    };
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -63,7 +68,7 @@ private final UserDetailsService userDetailsService;
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(
                         req -> req
-                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers(WHITE_LIST_URL).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .sessionManagement(
