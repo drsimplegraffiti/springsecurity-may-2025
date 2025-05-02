@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML declaration specifying UTF-8 encoding -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Root element for Spring Bean definitions.
+         - xmlns: Defines the default namespace for Spring beans.
+         - xsi: Used for XML Schema validation.
+         - xsi:schemaLocation: Tells the XML parser where to find the Spring beans schema.
+    -->
+
+    <!-- Define a Spring bean named 'transactionLimits' -->
+    <bean id="transactionLimits" class="com.drsimple.jwtsecurity.wallet.TransactionLimits">
+
+        <!-- Set the property 'withdrawalEnabled' to true -->
+        <property name="withdrawalEnabled" value="true"/>
+
+        <!-- Set the property 'depositEnabled' to true -->
+        <property name="depositEnabled" value="false"/>
+
+        <!-- Set the property 'maxDailyWithdrawal' to 1000 -->
+        <property name="maxDailyWithdrawal" value="1000"/>
+
+        <!-- Set the property 'maxDepositAmount' to 5000 -->
+        <property name="maxDepositAmount" value="300"/>
+
+    </bean>
+
+</beans>

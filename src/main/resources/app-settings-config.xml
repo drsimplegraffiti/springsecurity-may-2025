@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="appSettings" class="com.drsimple.jwtsecurity.config.AppSettings">
+        <property name="appName" value="MyApplication"/>
+        <property name="version" value="1.0.0"/>
+        <property name="maxUsers" value="1000"/>
+        <property name="enableFeatureX" value="true"/>
+    </bean>
+
+</beans>

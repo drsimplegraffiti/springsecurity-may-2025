@@ -39,7 +39,8 @@ private final UserDetailsService userDetailsService;
 
     public static final String[] WHITE_LIST_URL = {
             "/api/auth/**",
-            "/api/external/**"
+            "/api/external/**",
+            "/info"
     };
 
 

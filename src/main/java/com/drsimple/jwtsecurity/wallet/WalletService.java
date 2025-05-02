@@ -14,14 +14,16 @@ import java.util.UUID;
 @Service
 public class WalletService {
 
+    private final TransactionLimits transactionLimits;
     private final WalletRepository walletRepository;
     private final RedisLockService redisLockService;
     private final UserRepository userRepository;
     private final CurrentUserUtil currentUserUtil;
 
 
-    @Autowired
-    public WalletService(WalletRepository walletRepository, RedisLockService redisLockService, UserRepository userRepository, CurrentUserUtil currentUserUtil) {
+
+    public WalletService(TransactionLimits transactionLimits, WalletRepository walletRepository, RedisLockService redisLockService, UserRepository userRepository, CurrentUserUtil currentUserUtil) {
+        this.transactionLimits = transactionLimits;
         this.walletRepository = walletRepository;
         this.redisLockService = redisLockService;
         this.userRepository = userRepository;
@@ -55,6 +57,14 @@ public class WalletService {
 
     @Transactional
     public void transferMoney( String accountNumber, BigDecimal amount) {
+        if (!transactionLimits.isDepositEnabled()) {
+            throw new CustomBadRequestException("Deposits are currently disabled.");
+        }
+
+        if (amount.compareTo(BigDecimal.valueOf(transactionLimits.getMaxDepositAmount())) > 0) {
+            throw new CustomBadRequestException("Deposit exceeds maximum limit.");
+        }
+
         User loggedInUser = currentUserUtil.getLoggedInUser();
 
         var userExist = userRepository.findById(loggedInUser.getId());
