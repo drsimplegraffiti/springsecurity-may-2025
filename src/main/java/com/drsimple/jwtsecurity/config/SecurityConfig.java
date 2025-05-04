@@ -41,7 +41,8 @@ private final UserDetailsService userDetailsService;
             "/api/auth/**",
             "/api/external/**",
             "/info",
-            "/blogs/**"
+            "/blogs/**",
+            "/posts/**",
     };
 
 
