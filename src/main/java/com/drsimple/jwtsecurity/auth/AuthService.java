@@ -5,6 +5,7 @@ import com.drsimple.jwtsecurity.dto.LoginRequest;
 import com.drsimple.jwtsecurity.dto.RefreshTokenRequest;
 import com.drsimple.jwtsecurity.dto.RegisterRequest;
 import com.drsimple.jwtsecurity.dto.TokenPair;
+import com.drsimple.jwtsecurity.exception.ConflictException;
 import com.drsimple.jwtsecurity.exception.CustomBadRequestException;
 import com.drsimple.jwtsecurity.user.User;
 import com.drsimple.jwtsecurity.user.UserRepository;
@@ -73,7 +74,7 @@ public class AuthService {
     public void registerUser(RegisterRequest registerRequest) throws MessagingException {
         // Check if user with the same username already exist
         if(userRepository.existsByUsername(registerRequest.getEmail())) {
-            throw new IllegalArgumentException("Username is already in use");
+            throw new ConflictException("Username is already in use");
         }
 
         // Create new user

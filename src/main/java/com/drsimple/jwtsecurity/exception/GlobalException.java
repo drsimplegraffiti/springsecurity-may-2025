@@ -1,6 +1,7 @@
 package com.drsimple.jwtsecurity.exception;
 
 
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.mail.MessagingException;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.data.redis.RedisConnectionFailureException;
@@ -20,6 +21,10 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalException {
+    @ExceptionHandler(ExpiredJwtException.class)
+    public ResponseEntity<?> handleExpiredJwtException(ExpiredJwtException ex) {
+        return buildErrorResponse("JWT token has expired. Please log in again.", HttpStatus.UNAUTHORIZED);
+    }
 
     // Handle validation errors
     @ExceptionHandler(MethodArgumentNotValidException.class)
