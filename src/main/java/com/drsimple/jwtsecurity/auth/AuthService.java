@@ -26,6 +26,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -80,6 +81,7 @@ public class AuthService {
         // Create new user
         User user = User
                 .builder()
+                .createdAt(LocalDateTime.now())
                 .fullName(registerRequest.getFullName())
                 .username(registerRequest.getEmail())
                 .email(registerRequest.getEmail())

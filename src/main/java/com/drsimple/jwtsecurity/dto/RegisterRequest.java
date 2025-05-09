@@ -1,6 +1,7 @@
 package com.drsimple.jwtsecurity.dto;
 
 import com.drsimple.jwtsecurity.user.Role;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -16,6 +17,7 @@ public class RegisterRequest {
     private String fullName;
 
     @NotBlank(message = "Email is required")
+    @Email(message = "example@email.com")
     private String email;
 
 
