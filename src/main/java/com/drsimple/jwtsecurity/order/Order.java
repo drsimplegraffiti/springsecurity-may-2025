@@ -6,21 +6,27 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "orders") // use plural to avoid conflicts with SQL reserved keyword
+@DynamicInsert
+@DynamicUpdate
 @EntityListeners(AuditingEntityListener.class)
+@Table(name = "orders", indexes = {
+        @Index(name = "idx_orders_user_id", columnList = "user_id")
+})
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -30,12 +36,13 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private OrderStatus status; // e.g., PENDING, PAID, CANCELLED
+    private OrderStatus status;
 
-    @Column(nullable = false)
+    //This avoids performance hits from implicit conversions in some DBs
+    @Column(nullable = false, precision = 19, scale = 2)
     private BigDecimal totalAmount;
 
-    @ManyToOne(fetch = FetchType.LAZY)   //many orders can belong to one user
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
