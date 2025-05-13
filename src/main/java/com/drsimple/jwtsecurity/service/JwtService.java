@@ -54,7 +54,7 @@ public class JwtService {
         return generateToken(authentication, refreshExpirationMs, claims);
     }
 
-    private String generateToken(Authentication authentication, long expirationInMs, Map<String, String> claims) {
+    public String generateToken(Authentication authentication, long expirationInMs, Map<String, String> claims) {
         UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
 
         Date now = new Date(); // Time of token creation

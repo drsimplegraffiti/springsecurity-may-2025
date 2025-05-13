@@ -97,3 +97,21 @@ This tells Spring to read and register beans from the XML file into the applicat
 
 </beans>
 ```
+
+🔄 Sample Auth URL Generator
+Here's a working version you can paste and modify in your browser:
+
+```bash
+https://accounts.google.com/o/oauth2/v2/auth?client_id=YOUR_CLIENT_ID&redirect_uri=http://localhost:8080/auth/google/callback&response_type=code&scope=email%20profile&access_type=offline&prompt=consent
+clientId: 203386475544-334vvfbcf7faq2o9ul3q2go5vcc6adt8.apps.googleusercontent.com
+i.e
+https://accounts.google.com/o/oauth2/v2/auth?client_id=203386475544-334vvfbcf7faq2o9ul3q2go5vcc6adt8.apps.googleusercontent.com&redirect_uri=http://localhost:8080/login/oauth2/code/google&response_type=code&scope=email%20profile&access_type=offline&prompt=consent
+```
+
+https://accounts.google.com/o/oauth2/v2/auth?
+client_id=203386475544-334vvfbcf7faq2o9ul3q2go5vcc6adt8.apps.googleusercontent.com
+&redirect_uri=http://localhost:8080/login/oauth2/code/google
+&response_type=code
+&scope=openid%20email%20profile
+&access_type=offline
+&prompt=consent

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -43,5 +45,19 @@ public class OrderService {
 //                .userId(savedOrder.getUser().getId())
                 .userId(user.getId())
                 .build();
+    }
+
+
+    public List<OrderResponse> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream()
+                .map(order -> OrderResponse.builder()
+                        .id(order.getId())
+                        .orderNumber(order.getOrderNumber())
+                        .status(order.getStatus())
+                        .totalAmount(order.getTotalAmount())
+                        .userId(order.getUser() != null ? order.getUser().getId() : null)
+                        .build())
+                .collect(Collectors.toList());
     }
 }

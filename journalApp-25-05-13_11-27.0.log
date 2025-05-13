@@ -1,0 +1,5 @@
+25-05-13 11:27:49.759 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /login/oauth2/code/google 
+25-05-13 11:27:50.652 [http-nio-8080-exec-3] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 23502 
+25-05-13 11:27:50.652 [http-nio-8080-exec-3] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - ERROR: null value in column "full_name" of relation "application_user" violates not-null constraint
+  Detail: Failing row contains (3, null, 2025-05-13 11:27:50.646306, abayomiogunnusi@gmail.com, null, $2a$10$K66SBWSiB3igul6xLI6KcuuaZ4XZ0mhCSXlT1NvNzbicWCPM1prCq, null, ROLE_USER, 2025-05-13 11:27:50.646306, Abayomi Ogunnusi, null). 
+25-05-13 11:27:50.655 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 500 
