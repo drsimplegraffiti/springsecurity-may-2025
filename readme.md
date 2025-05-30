@@ -115,3 +115,59 @@ client_id=203386475544-334vvfbcf7faq2o9ul3q2go5vcc6adt8.apps.googleusercontent.c
 &scope=openid%20email%20profile
 &access_type=offline
 &prompt=consent
+
+
+### Store Procedure Example
+```sql
+CREATE PROCEDURE GetUserByEmail(IN userEmail VARCHAR(255))
+BEGIN
+    IF EXISTS (SELECT 1 FROM users WHERE email = userEmail) THEN
+        SELECT id, name, email FROM users WHERE email = userEmail;
+    ELSE
+        SELECT 'User not found' AS message;
+    END IF;
+END;
+
+```
+
+### Explanation
+- `CREATE PROCEDURE GetUserByEmail(IN userEmail VARCHAR(255))`: This defines a stored procedure named `GetUserByEmail` that takes one input parameter `userEmail` of type `VARCHAR(255)`.
+- `BEGIN ... END;`: This block contains the SQL statements that make up the body of the procedure.
+- `SELECT * FROM users WHERE email = userEmail;`: This SQL statement retrieves all columns from the `users` table where the `email` matches the input parameter `userEmail`.
+- To call this stored procedure, you would use:
+```sql
+CALL GetUserByEmail('example@example.com');
+```
+
+
+SP for get all blogs
+```sql
+CREATE PROCEDURE GetAllBlogs()
+BEGIN
+    SELECT * FROM blogs;
+END;
+```
+
+Then to use the store procedure in your repository layer, you can call it like this:
+
+```java
+@Procedure(name = "GetAllBlogs")
+public List<Blog> getAllBlogs();
+```
+
+SP FOR
+```java
+public interface BlogRepository extends JpaRepository<Blog, Long> {
+
+    @Procedure(procedureName = "findBlogsByAuthor")
+    List<Blog> findBlogsByAuthor(@Param("authorName") String authorName);
+}
+```
+
+```sql
+CREATE PROCEDURE findBlogsByAuthor(IN authorName VARCHAR(255))
+BEGIN
+    SELECT * FROM blogs WHERE author = authorName;
+END;
+```
+
