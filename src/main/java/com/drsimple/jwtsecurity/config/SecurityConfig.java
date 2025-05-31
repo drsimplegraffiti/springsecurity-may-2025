@@ -39,6 +39,8 @@ private final UserDetailsService userDetailsService;
     }
 
     public static final String[] WHITE_LIST_URL = {
+            "/ws/**",
+            "electronics/**",
             "/login/**",
             "/booking/**",
             "/login/oauth2/code/google",
@@ -102,7 +104,12 @@ private final UserDetailsService userDetailsService;
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:3000","https://secsystem-emr.vercel.app", "https://emr-sigma-ten.vercel.app", "Postman"));
+        configuration.setAllowedOrigins(List.of(
+                "http://localhost:63342",
+                "http://localhost:3000",
+                "https://secsystem-emr.vercel.app",
+                "https://emr-sigma-ten.vercel.app",
+                "Postman"));
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true); // Allow cookies or Authorization headers

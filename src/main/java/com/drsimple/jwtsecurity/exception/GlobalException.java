@@ -3,7 +3,9 @@ package com.drsimple.jwtsecurity.exception;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.mail.MessagingException;
+import jakarta.persistence.PersistenceException;
 import jakarta.validation.ConstraintViolationException;
+import org.hibernate.HibernateException;
 import org.springframework.data.redis.RedisConnectionFailureException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,11 @@ public class GlobalException {
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<?> handleExpiredJwtException(ExpiredJwtException ex) {
         return buildErrorResponse("JWT token has expired. Please log in again.", HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler({HibernateException.class, PersistenceException.class})
+    public ResponseEntity<?> handleHibernateException(Exception ex) {
+        return buildErrorResponse("Database error: " + ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     // Handle validation errors
