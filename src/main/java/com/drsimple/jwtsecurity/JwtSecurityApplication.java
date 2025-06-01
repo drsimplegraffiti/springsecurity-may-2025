@@ -20,5 +20,6 @@ public class JwtSecurityApplication {
         logger.info("Starting JwtSecurityApplication...⚡⚡⚡⚡⚡⚡⚡⚡⚡");
         SpringApplication.run(JwtSecurityApplication.class, args);
     }
+    
 
 }

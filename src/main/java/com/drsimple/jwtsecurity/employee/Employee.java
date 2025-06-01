@@ -3,6 +3,7 @@ package com.drsimple.jwtsecurity.employee;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedBy;
@@ -22,6 +23,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+//    @Nullable
     private String name;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd") // Format for date of birth to be in "yyyy-MM-dd" format
     private Date dateOfBirth;
