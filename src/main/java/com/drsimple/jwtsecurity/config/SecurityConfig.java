@@ -41,6 +41,8 @@ private final UserDetailsService userDetailsService;
     public static final String[] WHITE_LIST_URL = {
             "/ws/**",
             "electronics/**",
+            "/activity/**",
+            "/actuator/**",
             "/login/**",
             "/booking/**",
             "/login/oauth2/code/google",

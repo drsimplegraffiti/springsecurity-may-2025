@@ -175,3 +175,26 @@ END;
 ![img.png](img.png)
 ![img_1.png](img_1.png)
 ![img_2.png](img_2.png)
+
+
+### Circuit breaker
+We have a circuit breaker in our application to handle failures gracefully. It prevents the system from making calls to a service that is likely to fail, allowing it to recover and avoid cascading failures.
+We have three states for the circuit breaker:
+1. **Closed**: The circuit breaker allows requests to pass through to the service.
+2. **Open**: The circuit breaker blocks requests to the service, preventing further calls until it is reset.
+3. **Half-Open**: The circuit breaker allows a limited number of requests to pass through to test if the service has recovered.
+4. **Reset**: The circuit breaker resets to the Closed state after a successful request in Half-Open state.
+
+To use, add the resilience4j-spring-boot3 dependency to your project. 
+```xml
+   <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-aop</artifactId>
+</dependency>
+
+<dependency>
+<groupId>io.github.resilience4j</groupId>
+<artifactId>resilience4j-spring-boot3</artifactId>
+<version>2.1.0</version>
+</dependency>
+```

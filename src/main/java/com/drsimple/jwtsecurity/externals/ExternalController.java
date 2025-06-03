@@ -13,8 +13,11 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/api/external")
 public class ExternalController {
 
-    @Autowired
-    private WebClientService webClientService;
+    private final WebClientService webClientService;
+
+    public ExternalController(WebClientService webClientService) {
+        this.webClientService = webClientService;
+    }
 
     @GetMapping("/post")
     public void fetchPost() {
