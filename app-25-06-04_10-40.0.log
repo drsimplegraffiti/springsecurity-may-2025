@@ -1,0 +1,70 @@
+25-06-04 10:40:01.128 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http) 
+25-06-04 10:40:01.149 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"] 
+25-06-04 10:40:01.152 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat] 
+25-06-04 10:40:01.152 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40] 
+25-06-04 10:40:01.258 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext 
+25-06-04 10:40:01.258 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3814 ms 
+25-06-04 10:40:02.811 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default] 
+25-06-04 10:40:02.874 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.13.Final 
+25-06-04 10:40:02.934 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled 
+25-06-04 10:40:03.495 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer 
+25-06-04 10:40:03.581 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default) 
+25-06-04 10:40:03.598 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.apache.commons.dbcp2.BasicDataSource@7cab8d52']
+	Database driver: undefined/unknown
+	Database version: 16.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown 
+25-06-04 10:40:05.022 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
+25-06-04 10:40:05.299 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+25-06-04 10:40:06.023 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider 
+25-06-04 10:40:06.023 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR 
+25-06-04 10:40:07.132 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        blog b1_0 
+25-06-04 10:40:07.834 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
+25-06-04 10:40:08.215 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        Seat s1_0 
+    where
+        s1_0.id=? 
+25-06-04 10:40:08.221 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        Seat s1_0 
+    where
+        s1_0.id=? 
+25-06-04 10:40:08.224 [main] DEBUG org.hibernate.SQL - 
+    select
+        count(*) 
+    from
+        Seat s1_0 
+    where
+        s1_0.id=? 
+25-06-04 10:40:08.762 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+25-06-04 10:40:09.187 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
+25-06-04 10:40:10.328 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator' 
+25-06-04 10:40:10.447 [main] WARN  o.s.s.c.a.w.c.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry - One of the patterns in [/ws/**, /api/posts, electronics/**, /activity/**, /actuator/**, /login/**, /booking/**, /login/oauth2/code/google, /api/auth/**, /api/orders/**, /api/sample/**, /api/external/**, /info, /blogs/**, /posts/**, /v2/api-docs, /v3/api-docs, /v3/api-docs/**, /swagger-resources, /swagger-resources/**, /configuration/ui, /configuration/security, /swagger-ui/**, /webjars/**, /swagger-ui.html, /error] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception. 
+25-06-04 10:40:13.028 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting... 
+25-06-04 10:40:13.028 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3bd27dd9]] 
+25-06-04 10:40:13.029 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started. 
+25-06-04 10:40:13.035 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
+25-06-04 10:40:13.045 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/' 
+25-06-04 10:40:13.067 [main] INFO  c.d.j.JwtSecurityApplication - Started JwtSecurityApplication in 16.223 seconds (process running for 17.217) 
+25-06-04 10:40:13.076 [main] INFO  o.s.b.a.b.JobLauncherApplicationRunner - Running default command line with: [] 
+25-06-04 10:40:13.276 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+25-06-04 10:40:13.276 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+25-06-04 10:40:13.279 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms 
+25-06-04 10:40:13.324 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /activity/random 
+25-06-04 10:40:14.298 [http-nio-8080-exec-1] INFO  c.d.j.r.RestClientActivityController - Activity received: sunt aut facere repellat provident occaecati excepturi optio reprehenderit 
+25-06-04 10:40:14.320 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-04 10:40:22.948 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /activity/random 
+25-06-04 10:40:22.951 [http-nio-8080-exec-3] ERROR c.d.j.r.RestClientActivityController - Error occurred while fetching activity: I/O error on GET request for "https://jsonplaceholder.typicode.com/posts/1": No route to host: connect 
+25-06-04 10:40:22.953 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 

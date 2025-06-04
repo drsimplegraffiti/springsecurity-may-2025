@@ -40,6 +40,7 @@ private final UserDetailsService userDetailsService;
 
     public static final String[] WHITE_LIST_URL = {
             "/ws/**",
+            "/api/posts",
             "electronics/**",
             "/activity/**",
             "/actuator/**",
