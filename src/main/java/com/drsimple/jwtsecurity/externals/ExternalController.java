@@ -3,6 +3,7 @@ package com.drsimple.jwtsecurity.externals;
 
 import com.drsimple.jwtsecurity.util.WebClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,8 @@ public class ExternalController {
                     System.out.println(response);
                 });
     }
+
+
 
     @GetMapping("/post/client")
     public Mono<PostResponse> fetchPostClient() {

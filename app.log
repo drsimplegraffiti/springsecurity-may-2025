@@ -1,6 +1,34 @@
-25-06-03 21:28:03.245 [RMI TCP Connection(3)-192.168.1.106] WARN  o.s.b.a.health.HealthEndpointSupport - Health contributor org.springframework.boot.actuate.mail.MailHealthIndicator (mail) took 51823ms to respond 
-25-06-03 21:28:08.433 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /api/external/post/client 
-25-06-03 21:28:09.015 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
-25-06-03 21:28:09.741 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 1, completed tasks = 0] 
-25-06-03 21:28:37.184 [http-nio-8080-exec-8] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /api/external/post/client 
-25-06-03 21:28:37.186 [http-nio-8080-exec-8] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-04 08:28:13.643 [lettuce-eventExecutorLoop-1-1] INFO  i.l.core.protocol.ConnectionWatchdog - Reconnecting, last destination was redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/54.205.124.3:17993 
+25-06-04 08:28:13.656 [lettuce-nioEventLoop-4-2] WARN  i.l.core.protocol.ConnectionWatchdog - Cannot reconnect to [redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/<unresolved>:17993]: No route to host: getsockopt: redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/54.205.124.3:17993 
+io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: No route to host: getsockopt: redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/54.205.124.3:17993
+Caused by: java.net.NoRouteToHostException: No route to host: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:1060)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+25-06-04 08:28:22.642 [lettuce-eventExecutorLoop-1-5] INFO  i.l.core.protocol.ConnectionWatchdog - Reconnecting, last destination was redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/<unresolved>:17993 
+25-06-04 08:28:22.643 [lettuce-nioEventLoop-4-6] WARN  i.l.core.protocol.ConnectionWatchdog - Cannot reconnect to [redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/<unresolved>:17993]: No route to host: getsockopt: redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/54.205.124.3:17993 
+io.netty.channel.AbstractChannel$AnnotatedNoRouteToHostException: No route to host: getsockopt: redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/54.205.124.3:17993
+Caused by: java.net.NoRouteToHostException: No route to host: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:1060)
+	at io.netty.channel.socket.nio.NioSocketChannel.doFinishConnect(NioSocketChannel.java:336)
+	at io.netty.channel.nio.AbstractNioChannel$AbstractNioUnsafe.finishConnect(AbstractNioChannel.java:339)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:784)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:732)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:658)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:562)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:1570)

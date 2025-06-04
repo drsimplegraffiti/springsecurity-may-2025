@@ -1,62 +1,19 @@
-25-06-03 21:27:01.251 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration) 
-25-06-03 21:27:01.610 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default' 
-25-06-03 21:27:02.629 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider 
-25-06-03 21:27:02.629 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR 
-25-06-03 21:27:03.811 [main] DEBUG org.hibernate.SQL - 
-    select
-        count(*) 
-    from
-        blog b1_0 
-25-06-03 21:27:04.715 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used. 
-25-06-03 21:27:05.041 [main] DEBUG org.hibernate.SQL - 
-    select
-        count(*) 
-    from
-        Seat s1_0 
-    where
-        s1_0.id=? 
-25-06-03 21:27:05.047 [main] DEBUG org.hibernate.SQL - 
-    select
-        count(*) 
-    from
-        Seat s1_0 
-    where
-        s1_0.id=? 
-25-06-03 21:27:05.050 [main] DEBUG org.hibernate.SQL - 
-    select
-        count(*) 
-    from
-        Seat s1_0 
-    where
-        s1_0.id=? 
-25-06-03 21:27:05.571 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
-25-06-03 21:27:06.089 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
-25-06-03 21:27:07.123 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 4 endpoints beneath base path '/actuator' 
-25-06-03 21:27:07.214 [main] WARN  o.s.s.c.a.w.c.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry - One of the patterns in [/ws/**, electronics/**, /activity/**, /actuator/**, /login/**, /booking/**, /login/oauth2/code/google, /api/auth/**, /api/orders/**, /api/sample/**, /api/external/**, /info, /blogs/**, /posts/**, /v2/api-docs, /v3/api-docs, /v3/api-docs/**, /swagger-resources, /swagger-resources/**, /configuration/ui, /configuration/security, /swagger-ui/**, /webjars/**, /swagger-ui.html, /error] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception. 
-25-06-03 21:27:09.997 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting... 
-25-06-03 21:27:09.998 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@557aff83]] 
-25-06-03 21:27:10.000 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started. 
-25-06-03 21:27:10.013 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
-25-06-03 21:27:10.060 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/' 
-25-06-03 21:27:10.131 [main] INFO  c.d.j.JwtSecurityApplication - Started JwtSecurityApplication in 20.251 seconds (process running for 22.15) 
-25-06-03 21:27:10.282 [main] INFO  o.s.b.a.b.JobLauncherApplicationRunner - Running default command line with: [] 
-25-06-03 21:27:11.608 [RMI TCP Connection(4)-192.168.1.106] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
-25-06-03 21:27:11.609 [RMI TCP Connection(4)-192.168.1.106] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
-25-06-03 21:27:11.614 [RMI TCP Connection(4)-192.168.1.106] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 5 ms 
-25-06-03 21:27:36.023 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception 
-org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.translateException(LettuceConnectionFactory.java:1858)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1789)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getNativeConnection(LettuceConnectionFactory.java:1586)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.lambda$getConnection$0(LettuceConnectionFactory.java:1566)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.doInLock(LettuceConnectionFactory.java:1527)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$SharedConnection.getConnection(LettuceConnectionFactory.java:1563)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getSharedConnection(LettuceConnectionFactory.java:1249)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory.getConnection(LettuceConnectionFactory.java:1055)
-	at org.springframework.data.redis.core.RedisConnectionUtils.fetchConnection(RedisConnectionUtils.java:195)
-	at org.springframework.data.redis.core.RedisConnectionUtils.doGetConnection(RedisConnectionUtils.java:144)
-	at org.springframework.data.redis.core.RedisConnectionUtils.getConnection(RedisConnectionUtils.java:105)
-	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:398)
+25-06-04 08:27:56.299 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception 
+org.springframework.dao.QueryTimeoutException: Redis command timed out
+	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:68)
+	at org.springframework.data.redis.connection.lettuce.LettuceExceptionConverter.convert(LettuceExceptionConverter.java:41)
+	at org.springframework.data.redis.PassThroughExceptionTranslationStrategy.translate(PassThroughExceptionTranslationStrategy.java:40)
+	at org.springframework.data.redis.FallbackExceptionTranslationStrategy.translate(FallbackExceptionTranslationStrategy.java:38)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.convertLettuceAccessException(LettuceConnection.java:310)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.await(LettuceConnection.java:1012)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.lambda$doInvoke$3(LettuceConnection.java:447)
+	at org.springframework.data.redis.connection.lettuce.LettuceInvoker$Synchronizer.invoke(LettuceInvoker.java:665)
+	at org.springframework.data.redis.connection.lettuce.LettuceInvoker.just(LettuceInvoker.java:94)
+	at org.springframework.data.redis.connection.lettuce.LettuceStringCommands.incr(LettuceStringCommands.java:168)
+	at org.springframework.data.redis.connection.DefaultedRedisConnection.incr(DefaultedRedisConnection.java:368)
+	at org.springframework.data.redis.connection.DefaultStringRedisConnection.incr(DefaultStringRedisConnection.java:506)
+	at org.springframework.data.redis.core.DefaultValueOperations.lambda$increment$4(DefaultValueOperations.java:88)
+	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:411)
 	at org.springframework.data.redis.core.RedisTemplate.execute(RedisTemplate.java:378)
 	at org.springframework.data.redis.core.AbstractOperations.execute(AbstractOperations.java:117)
 	at org.springframework.data.redis.core.DefaultValueOperations.increment(DefaultValueOperations.java:88)
@@ -175,52 +132,9 @@ org.springframework.data.redis.RedisConnectionFailureException: Unable to connec
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1570)
-Caused by: org.springframework.data.redis.connection.PoolException: Could not get a resource from the pool
-	at org.springframework.data.redis.connection.lettuce.LettucePoolingConnectionProvider.getConnection(LettucePoolingConnectionProvider.java:114)
-	at org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory$ExceptionTranslatingConnectionProvider.getConnection(LettuceConnectionFactory.java:1787)
-	... 128 common frames omitted
-Caused by: io.lettuce.core.RedisConnectionException: Unable to connect to redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com/<unresolved>:17993
-	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:63)
-	at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:41)
-	at io.lettuce.core.AbstractRedisClient.getConnection(AbstractRedisClient.java:354)
-	at io.lettuce.core.RedisClient.connect(RedisClient.java:219)
-	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.lambda$getConnection$1(StandaloneConnectionProvider.java:112)
-	at java.base/java.util.Optional.orElseGet(Optional.java:364)
-	at org.springframework.data.redis.connection.lettuce.StandaloneConnectionProvider.getConnection(StandaloneConnectionProvider.java:112)
-	at org.springframework.data.redis.connection.lettuce.LettucePoolingConnectionProvider.lambda$getConnection$0(LettucePoolingConnectionProvider.java:96)
-	at io.lettuce.core.support.ConnectionPoolSupport$RedisPooledObjectFactory.create(ConnectionPoolSupport.java:196)
-	at io.lettuce.core.support.ConnectionPoolSupport$RedisPooledObjectFactory.create(ConnectionPoolSupport.java:186)
-	at org.apache.commons.pool2.BasePooledObjectFactory.makeObject(BasePooledObjectFactory.java:68)
-	at org.apache.commons.pool2.impl.GenericObjectPool.create(GenericObjectPool.java:557)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:299)
-	at org.apache.commons.pool2.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:231)
-	at io.lettuce.core.support.ConnectionPoolSupport$1.borrowObject(ConnectionPoolSupport.java:107)
-	at io.lettuce.core.support.ConnectionPoolSupport$1.borrowObject(ConnectionPoolSupport.java:102)
-	at org.springframework.data.redis.connection.lettuce.LettucePoolingConnectionProvider.getConnection(LettucePoolingConnectionProvider.java:109)
-	... 129 common frames omitted
-Caused by: java.net.UnknownHostException: Failed to resolve 'redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com' [A(1)]
-	at io.netty.resolver.dns.DnsResolveContext.finishResolve(DnsResolveContext.java:1150)
-	at io.netty.resolver.dns.DnsResolveContext.tryToFinishResolve(DnsResolveContext.java:1097)
-	at io.netty.resolver.dns.DnsResolveContext.query(DnsResolveContext.java:455)
-	at io.netty.resolver.dns.DnsResolveContext.access$700(DnsResolveContext.java:70)
-	at io.netty.resolver.dns.DnsResolveContext$2.operationComplete(DnsResolveContext.java:524)
-	at io.netty.util.concurrent.DefaultPromise.notifyListener0(DefaultPromise.java:590)
-	at io.netty.util.concurrent.DefaultPromise.notifyListeners0(DefaultPromise.java:583)
-	at io.netty.util.concurrent.DefaultPromise.notifyListenersNow(DefaultPromise.java:559)
-	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:492)
-	at io.netty.util.concurrent.DefaultPromise.setValue0(DefaultPromise.java:636)
-	at io.netty.util.concurrent.DefaultPromise.setFailure0(DefaultPromise.java:629)
-	at io.netty.util.concurrent.DefaultPromise.tryFailure(DefaultPromise.java:118)
-	at io.netty.resolver.dns.DnsQueryContext.finishFailure(DnsQueryContext.java:343)
-	at io.netty.resolver.dns.DnsQueryContext$4.run(DnsQueryContext.java:278)
-	at io.netty.util.concurrent.PromiseTask.runTask(PromiseTask.java:98)
-	at io.netty.util.concurrent.ScheduledFutureTask.run(ScheduledFutureTask.java:156)
-	at io.netty.util.concurrent.AbstractEventExecutor.runTask(AbstractEventExecutor.java:173)
-	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:166)
-	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:472)
-	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:569)
-	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:998)
-	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
-	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
-	... 1 common frames omitted
-Caused by: io.netty.resolver.dns.DnsNameResolverTimeoutException: [12455: /192.168.1.1:53] DefaultDnsQuestion(redis-17993.c256.us-east-1-2.ec2.redns.redis-cloud.com. IN A) query '12455' via UDP timed out after 5000 milliseconds (no stack trace available)
+Caused by: io.lettuce.core.RedisCommandTimeoutException: Command timed out after 1 minute(s)
+	at io.lettuce.core.internal.ExceptionFactory.createTimeoutException(ExceptionFactory.java:63)
+	at io.lettuce.core.internal.Futures.awaitOrCancel(Futures.java:233)
+	at io.lettuce.core.LettuceFutures.awaitOrCancel(LettuceFutures.java:59)
+	at org.springframework.data.redis.connection.lettuce.LettuceConnection.await(LettuceConnection.java:1010)
+	... 126 common frames omitted
