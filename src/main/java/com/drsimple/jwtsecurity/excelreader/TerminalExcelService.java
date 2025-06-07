@@ -45,6 +45,7 @@ public class TerminalExcelService {
                 terminals.add(terminal);
             }
 
+            logger.info("Read {} terminals from the Excel file.", terminals.size());
             terminalRepository.saveAll(terminals);
         }
     }
