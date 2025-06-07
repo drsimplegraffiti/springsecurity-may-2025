@@ -1,0 +1,39 @@
+25-06-07 08:59:39.162 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: POST /api/terminals/upload 
+25-06-07 08:59:39.567 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.terminalId,
+        t1_0.isEnabled,
+        t1_0.isMapped,
+        t1_0.routeCode,
+        t1_0.serialNumber 
+    from
+        Terminal t1_0 
+    where
+        t1_0.terminalId=? 
+25-06-07 08:59:39.591 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.terminalId,
+        t1_0.isEnabled,
+        t1_0.isMapped,
+        t1_0.routeCode,
+        t1_0.serialNumber 
+    from
+        Terminal t1_0 
+    where
+        t1_0.terminalId=? 
+25-06-07 08:59:39.606 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Terminal
+        (isEnabled, isMapped, routeCode, serialNumber, terminalId) 
+    values
+        (?, ?, ?, ?, ?) 
+25-06-07 08:59:39.609 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        Terminal
+        (isEnabled, isMapped, routeCode, serialNumber, terminalId) 
+    values
+        (?, ?, ?, ?, ?) 
+25-06-07 08:59:39.625 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-07 08:59:42.969 [MessageBroker-1] INFO  o.s.w.s.c.WebSocketMessageBrokerStats - WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 1, completed tasks = 0] 

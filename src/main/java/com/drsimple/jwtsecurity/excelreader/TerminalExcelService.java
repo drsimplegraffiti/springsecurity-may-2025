@@ -46,7 +46,16 @@ public class TerminalExcelService {
             }
 
             logger.info("Read {} terminals from the Excel file.", terminals.size());
-            terminalRepository.saveAll(terminals);
+//            terminalRepository.saveAll(terminals);
+            //ensure duplicate entries are not saved
+            for (Terminal terminal : terminals) {
+                if (!terminalRepository.existsById(terminal.getTerminalId())) {
+                    terminalRepository.save(terminal);
+                } else {
+                    logger.warn("Duplicate terminal ID found: {}", terminal.getTerminalId());
+                }
+            }
         }
+
     }
 }
