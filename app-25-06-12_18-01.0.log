@@ -1,0 +1,33 @@
+25-06-12 18:01:00.419 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index 
+25-06-12 18:01:02.139 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 5 endpoints beneath base path '/actuator' 
+25-06-12 18:01:02.251 [main] WARN  o.s.s.c.a.w.c.AuthorizeHttpRequestsConfigurer$AuthorizationManagerRequestMatcherRegistry - One of the patterns in [/togglz-console, /togglz-console/**, /api/terminals/**, /api/courses/**, /ws/**, /api/posts, electronics/**, /activity/**, /actuator/**, /login/**, /booking/**, /login/oauth2/code/google, /api/auth/**, /api/orders/**, /api/sample/**, /api/external/**, /info, /blogs/**, /posts/**, /v2/api-docs, /v3/api-docs, /v3/api-docs/**, /swagger-resources, /swagger-resources/**, /configuration/ui, /configuration/security, /swagger-ui/**, /webjars/**, /swagger-ui.html, /error] is missing a leading slash. This is discouraged; please include the leading slash in all your request matcher patterns. In future versions of Spring Security, leaving out the leading slash will result in an exception. 
+25-06-12 18:01:04.978 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Starting... 
+25-06-12 18:01:04.978 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@3e28dace]] 
+25-06-12 18:01:04.979 [main] INFO  o.s.m.s.b.SimpleBrokerMessageHandler - Started. 
+25-06-12 18:01:04.985 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"] 
+25-06-12 18:01:04.998 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/' 
+25-06-12 18:01:05.024 [main] INFO  c.d.j.JwtSecurityApplication - Started JwtSecurityApplication in 20.129 seconds (process running for 22.471) 
+25-06-12 18:01:05.035 [main] INFO  o.s.b.a.b.JobLauncherApplicationRunner - Running default command line with: [] 
+25-06-12 18:01:51.097 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/index 
+25-06-12 18:01:51.149 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:51.168 [http-nio-8080-exec-2] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/jquery.js 
+25-06-12 18:01:51.169 [http-nio-8080-exec-5] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/style.css 
+25-06-12 18:01:51.169 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/bootstrap.css 
+25-06-12 18:01:51.170 [http-nio-8080-exec-5] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:51.170 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/bootstrap.js 
+25-06-12 18:01:51.174 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:51.174 [http-nio-8080-exec-2] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:51.174 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:51.217 [http-nio-8080-exec-6] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+25-06-12 18:01:51.217 [http-nio-8080-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet' 
+25-06-12 18:01:51.220 [http-nio-8080-exec-6] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms 
+25-06-12 18:01:59.715 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/index 
+25-06-12 18:01:59.718 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:59.746 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/style.css 
+25-06-12 18:01:59.746 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/bootstrap.js 
+25-06-12 18:01:59.746 [http-nio-8080-exec-2] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/bootstrap.css 
+25-06-12 18:01:59.747 [http-nio-8080-exec-5] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/jquery.js 
+25-06-12 18:01:59.748 [http-nio-8080-exec-3] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:59.750 [http-nio-8080-exec-4] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:59.751 [http-nio-8080-exec-2] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 
+25-06-12 18:01:59.752 [http-nio-8080-exec-5] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 200 

@@ -198,3 +198,18 @@ To use, add the resilience4j-spring-boot3 dependency to your project.
 <version>2.1.0</version>
 </dependency>
 ```
+
+
+#### Enable and disable the togglz
+```json
+POST http://localhost:8080/actuator/togglz
+{
+    "name":"DISCOUNT_APPLIED",
+    "enabled": true
+}
+```
+![img_3.png](img_3.png)
+
+### You can also enable and disable togglz using the UI
+http://localhost:8080/togglz-console/index
+![img_4.png](img_4.png)

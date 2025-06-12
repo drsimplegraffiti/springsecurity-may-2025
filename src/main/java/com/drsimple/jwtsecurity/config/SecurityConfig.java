@@ -39,7 +39,10 @@ private final UserDetailsService userDetailsService;
     }
 
     public static final String[] WHITE_LIST_URL = {
+            "/togglz-console", "/togglz-console/**",
+
             "/api/terminals/**",
+            "/api/courses/**",
             "/ws/**",
             "/api/posts",
             "electronics/**",

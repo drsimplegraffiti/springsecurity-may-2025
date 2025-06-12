@@ -1,0 +1,2 @@
+25-06-12 17:56:06.521 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Request: GET /togglz-console/index 
+25-06-12 17:56:06.565 [http-nio-8080-exec-1] INFO  c.d.jwtsecurity.util.LoggingFilter - Response: 403 
